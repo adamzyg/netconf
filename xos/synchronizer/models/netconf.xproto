@@ -1,0 +1,16 @@
+option app_label = "netconf";
+option name = "netconf";
+
+message NetconfService (Service){
+    option verbose_name = "Netconf Service";
+    required string service_message = 1 [help_text = "Netconf Service Message to Display", max_length = 254, null = False, db_index = False, blank = False, tosca_key=True];
+}
+
+message NetconfApp (XOSBase){
+    option verbose_name = "Netconf Application";
+    required string host = 1 [help_text = "the netconf host", max_length = 254, null = False, content_type = "stripped", db_index = False, blank = False, tosca_key=True];
+    required int32 port = 2 [help_text = "the port of netconf host", max_length=6, null = False, content_type = "stripped", db_index = False, blank = False];
+    required string user = 3 [help_text = "the user of netconf host", max_length=20, null = False, content_type = "stripped", db_index = False, blank = False];
+    required string password = 4 [help_text = "the password of netconf host", max_length=30, null = False, content_type = "stripped", db_index = False, blank = False];
+    optional string yang = 5 [help_text = "the yang structure of netconf host", max_length=30000, content_type = "stripped", db_index = False, blank = False];
+}
